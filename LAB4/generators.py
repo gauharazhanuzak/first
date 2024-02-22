@@ -4,9 +4,9 @@ def squares(N):
         yield i**2
 
 N = int(input())
-generator = squares(N)
+t = squares(N)
 
-for square in generator:
+for square in t:
     print(square)
 
 #2
@@ -19,14 +19,14 @@ even = even_numbers(N)
 print("Even numbers between 0 and", N, ":", ', '.join(map(str, even)))
 
 #3
-def divisible_by_3_and_4_generator(N):
+def div_generator(N):
     for i in range(N+1):
         if i % 3 == 0 and i % 4 == 0:
             yield i
 
-N = int(input("Enter the value of N: "))
-divisible_numbers = divisible_by_3_and_4_generator(N)
-print("Numbers divisible by 3 and 4 between 0 and", N, ":", ', '.join(map(str, divisible_numbers)))
+N = int(input())
+numbers = div_generator(N)
+print("Numbers divisible by 3 and 4 between 0 and", N, ":", ', '.join(map(str, numbers)))
 
 #4
 def squares(a, b):
@@ -34,16 +34,16 @@ def squares(a, b):
         yield i**2
 
 
-a, b = 2, 5
-for square in squares(a, b):
-    print(square)
+a, b = 3,4
+for s in squares(a, b):
+    print(s)
 
 #5
-def numbers_down_to_zero(n):
+def numbers(n):
     while n >= 0:
         yield n
         n -= 1
 
-n = 5
-for num in numbers_down_to_zero(n):
+n = 7
+for num in numbers(n):
     print(num)
