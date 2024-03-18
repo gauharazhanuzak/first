@@ -25,22 +25,22 @@ while running:
     
     pygame.draw.circle(screen, RED, (x, y), radius)
     
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+    for l in pygame.event.get():
+        if l.type == pygame.QUIT:
             running = False
-        elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP:
+        elif l.type == pygame.KEYDOWN:
+            if l.key == pygame.K_UP:
                 dy = -speed
-            elif event.key == pygame.K_DOWN:
+            elif l.key == pygame.K_DOWN:
                 dy = speed
-            elif event.key == pygame.K_LEFT:
+            elif l.key == pygame.K_LEFT:
                 dx = -speed
-            elif event.key == pygame.K_RIGHT:
+            elif l.key == pygame.K_RIGHT:
                 dx = speed
-        elif event.type == pygame.KEYUP:
-            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+        elif l.type == pygame.KEYUP:
+            if l.key == pygame.K_UP or l.key == pygame.K_DOWN:
                 dy = 0
-            elif event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+            elif l.key == pygame.K_LEFT or l.key == pygame.K_RIGHT:
                 dx = 0
     
 
