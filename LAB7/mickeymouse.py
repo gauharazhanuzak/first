@@ -18,7 +18,6 @@ m_rect = m_hand.get_rect(center=(320,320))
 IMAGE_SMALL2 = pygame.transform.scale(m_hand, (300, 150))
 m_handc= IMAGE_SMALL2.copy()
 fps = pygame.time.Clock()
-
 def rotate(image,angle):
     new_image = pygame.transform.rotozoom(image,-angle,1)
     return new_image
