@@ -53,10 +53,8 @@ for i in range(5):
     for j in range(3):
         brick = pygame.Rect(i * 150 + 50, j * 40 + 40, 110, 15)
         bricks.append(brick)
-        if random.randint(1, 5) == 1:
+        if i == 0:
             unbreakable_bricks.append(brick)
-        elif random.randint(1, 5) == 1:
-            bonus_bricks.append(brick)
 
 # Main menu loop
 draw_menu()
@@ -113,10 +111,12 @@ while running:
             if ball_rect.colliderect(brick):
                 if brick in unbreakable_bricks:
                     ball_speed[1] = -ball_speed[1]
+
                 else:
                     bricks.remove(brick)
                     ball_speed[1] = -ball_speed[1]
                     brick_hit_sound.play()
+                    
 
         # Speed increment every second
         time_elapsed += clock.tick() / 1000  # Time since the last frame in seconds
@@ -135,7 +135,10 @@ while running:
         pygame.draw.rect(screen, BLUE, paddle_rect)
         pygame.draw.ellipse(screen, WHITE, ball_rect)
         for brick in bricks:
-            pygame.draw.rect(screen, WHITE, brick)
+            if brick in unbreakable_bricks:
+                pygame.draw.rect(screen, (255, 0, 0), brick)  
+            else:
+                pygame.draw.rect(screen, WHITE, brick)
 
     pygame.display.flip()
     clock.tick(60)

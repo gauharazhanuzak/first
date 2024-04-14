@@ -29,7 +29,7 @@ SCORE = 0
 font = pygame.font.SysFont("Verdana", 60)
 font_small = pygame.font.SysFont("Verdana", 20)
 game_over = font.render("Game Over", True, BLACK)
-
+game_over2 = font.render("Score:", True, BLACK)
 background = pygame.image.load("road.png")
 
 # Display
@@ -136,13 +136,14 @@ while True:
     if pygame.sprite.spritecollideany(P1, enemies):
         pygame.mixer.Sound('crash.mp3').play()
         time.sleep(0.5)
-
         DISPLAYSURF.fill(RED)
+        final_score_text = font_small.render("Final Score: " + str(SCORE), True, BLACK)
         DISPLAYSURF.blit(game_over, (30, 250))
-
+        DISPLAYSURF.blit(final_score_text, (30, 320))
         pygame.display.update()
         for entity in all_sprites:
             entity.kill()
+        # Delay before quitting
         time.sleep(2)
         pygame.quit()
         sys.exit()
